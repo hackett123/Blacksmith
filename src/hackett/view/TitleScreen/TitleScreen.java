@@ -1,9 +1,12 @@
 package hackett.view.TitleScreen;
 
 import hackett.view.GuiHandler;
+import hackett.view.TitleScreen.NewGame;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class TitleScreen {
@@ -24,6 +27,10 @@ public class TitleScreen {
 
         buildTitleScreen();
 
+    }
+
+    public GuiHandler getGuiHandler() {
+        return this.guiHandler;
     }
 
     private void buildTitleScreen() {
@@ -104,9 +111,16 @@ public class TitleScreen {
         gameLabels.add(instructionsText);
 
         newGame = new JButton("New Game");
+        newGame.addActionListener(l -> new NewGame(this, this.guiHandler));
+
         loadGame = new JButton("Load Game");
+        loadGame.addActionListener(l -> new LoadGame(this, this.guiHandler));
+
         settings = new JButton("Settings");
+        settings.addActionListener(l -> new Settings(this, this.guiHandler));
+
         credits = new JButton("Credits");
+        credits.addActionListener(l -> new Credits(this, this.guiHandler));
 
         gameButtons.add(newGame);
         gameButtons.add(loadGame);
@@ -120,7 +134,6 @@ public class TitleScreen {
             gameButton.setOpaque(true);
             gameButton.setBorderPainted(true);
             gameButton.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY, 2, true));
-            gameButton.addActionListener(l -> System.out.println(gameButton.getText() + " selected"));
         }
 
         GridLayout grid = new GridLayout(4, 4);
