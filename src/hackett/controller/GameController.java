@@ -17,4 +17,9 @@ public class GameController {
         this.modelManager = new ModelManager(this);
         SwingUtilities.invokeLater(this.guiHandler = new GuiHandler(this));
     }
+
+    public void startGame() {
+
+    }
+
 }

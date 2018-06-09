@@ -1,12 +1,8 @@
 package hackett.view.TitleScreen;
 
 import hackett.view.GuiHandler;
-import hackett.view.TitleScreen.NewGame;
-
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class TitleScreen {
@@ -29,9 +25,22 @@ public class TitleScreen {
 
     }
 
+    public JFrame getFrame() {
+        return this.frame;
+    }
     public GuiHandler getGuiHandler() {
         return this.guiHandler;
     }
+    public JPanel getGamePanel() {
+        return this.gamePanel;
+    }
+    public JPanel getHeaderPanel() {
+        return this.headerPanel;
+    }
+    public JPanel getStatusPanel() {
+        return this.statusPanel;
+    }
+
 
     private void buildTitleScreen() {
 
@@ -81,7 +90,6 @@ public class TitleScreen {
         contact.setForeground(Color.WHITE);
 
         GridLayout grid = new GridLayout(3, 1);
-
         headerPanel.setLayout(grid);
 
         headerPanel.add(title);
@@ -111,16 +119,16 @@ public class TitleScreen {
         gameLabels.add(instructionsText);
 
         newGame = new JButton("New Game");
-        newGame.addActionListener(l -> new NewGame(this, this.guiHandler));
+        newGame.addActionListener(l -> new NewGame(this.guiHandler));
 
         loadGame = new JButton("Load Game");
-        loadGame.addActionListener(l -> new LoadGame(this, this.guiHandler));
+        loadGame.addActionListener(l -> new LoadGame(this.guiHandler));
 
         settings = new JButton("Settings");
-        settings.addActionListener(l -> new Settings(this, this.guiHandler));
+        settings.addActionListener(l -> new Settings(this.guiHandler));
 
         credits = new JButton("Credits");
-        credits.addActionListener(l -> new Credits(this, this.guiHandler));
+        credits.addActionListener(l -> new Credits(this.guiHandler));
 
         gameButtons.add(newGame);
         gameButtons.add(loadGame);

@@ -2,13 +2,15 @@ package hackett.view.TitleScreen;
 
 import hackett.view.GuiHandler;
 
+import javax.swing.*;
+
 public class LoadGame {
 
-    private TitleScreen titleScreen;
     private GuiHandler guiHandler;
+    private JFrame frame;
+    private JPanel headerPanel, gamePanel, statusPanel;
 
-    public LoadGame(TitleScreen titleScreen, GuiHandler guiHandler) {
-        this.titleScreen = titleScreen;
+    public LoadGame(GuiHandler guiHandler) {
         this.guiHandler = guiHandler;
     }
 
