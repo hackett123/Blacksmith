@@ -6,38 +6,28 @@ import hackett.view.StartGameView;
 import javax.swing.*;
 import java.awt.*;
 
-public class NewGame {
+public class NewGame extends TitleScreenButtonScreen {
 
     private GuiHandler guiHandler;
     private JFrame frame;
-    private JPanel headerPanel, gamePanel, gamePanelCopy, statusPanel, newGamePanel;
+    private JPanel gamePanelCopy, newGamePanel;
 
-    public NewGame(GuiHandler guiHandler) {
+    NewGame(GuiHandler guiHandler) {
+        super(guiHandler);
         this.guiHandler = guiHandler;
-        initFields();
-
-        frame.remove(gamePanel);
-        frame.add(newGamePanel);
-
+        referencePointers();
         addComponents();
-
-        frame.revalidate();
+        frame.validate();
     }
 
-    public void initFields() {
-        this.frame = guiHandler.getMainframe();
-        this.headerPanel = guiHandler.getHeaderPanel();
-        this.gamePanel = guiHandler.getGamePanel();
-        this.gamePanelCopy = new JPanel();
-
-        for (Component c : gamePanel.getComponents()) {
-            gamePanelCopy.add(c);
-        }
-
-        this.statusPanel = guiHandler.getStatusPanel();
-        newGamePanel = new JPanel();
+    @Override
+    public void referencePointers() {
+        this.frame = super.getFrame();
+        this.gamePanelCopy = super.getGamePanelCopy();
+        this.newGamePanel = super.getNewGamePanel();
     }
 
+    @Override
     public void addComponents() {
         JLabel nameLabel, difficultyLabel;
         JTextArea nameTA, difficultyTA;
@@ -87,7 +77,6 @@ public class NewGame {
             frame.add(gamePanelCopy);
             frame.revalidate();
         });
-
 
         newGamePanel.add(go);
         newGamePanel.add(back);
